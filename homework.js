@@ -57,30 +57,18 @@ console.log(typeof(person3.shakes))
 const myParsing = (dataobj) => {
     switch(typeof(dataobj)=="string") {
         case true:
-            console.log(dataobj)
-            break;
+            return console.log(`\t${dataobj}\n`)
         default:
             switch(typeof dataobj === 'object' && !Array.isArray(dataobj)) {
                 case true:
                     for (let key in dataobj) {
                         console.log(`${key} -\n`);
-                        switch(typeof(dataobj.key)) {
-                            case "string":
-                                console.log(`\t${dataobj.key}\n`);
-                                continue;
-                            default:
-                                return myParsing(dataobj[key]);
-                            }
+                        return myParsing(dataobj[key]);
+                        }
                     }
                 default:
-                    for (let item of dataobj) {
-                        switch(typeof(item)) {
-                            case "string":
-                                console.log(`\t${item}\n`);
-                                break;
-                            default:
-                                console.log(`${item}`);
-                                return myParsing(item);
+                    for (item of dataobj) {
+                        myParsing(item);
                 }
                 }
             }
@@ -157,7 +145,34 @@ const ergastData = async () => {
 
 // Codewars
 
-//1.
+//1. Vowel Count
+function getCount(str) {
+  let count = 0;
+  const array = Array.from(str);
+  for (i of str) {
+    if (i == 'a' || i == 'e' || i == 'i' || i == 'o' || i == 'u') {
+      count++;
+    }
+    }
+  return count;
+  }
 
 
-// 2
+// 2. Disemvowel Trolls
+function disemvowel(str) {
+  let disemvoweled = '';
+  for (i of str) {
+    n = i.toLowerCase()
+    if (n != 'a' && n != 'e' && n != 'i' && n != 'o' && n != 'u') {
+      disemvoweled += i;
+    }
+  }
+  return disemvoweled;
+}
+
+
+
+
+
+
+
