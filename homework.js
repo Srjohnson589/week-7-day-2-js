@@ -40,16 +40,16 @@ Output I want:
 
 
 //     switch(check datatype of thing going into)
+        recurse until base case of string - to print
 //     if dict - 
+            if its a dict inside a dict, tab over
 //          first print the key, dash, line break
-            if string inside, print string, continue to next key
-            if list,
-                return recurse
+            recurse for insides
 //     if list -
-            if string, print
-            othwise,
-                return recurse
-//     if str - print, go to next item
+            recurse for each item
+
+        I did not get it to work exactly as I wanted above. The dict inside the dict threw me. However,
+        I think it looks ok.
 */
 
 console.log(typeof(person3.shakes))
@@ -59,13 +59,12 @@ const myParsing = (dataobj) => {
         case true:
             return console.log(`\t${dataobj}\n`)
         default:
-            switch(typeof dataobj === 'object' && !Array.isArray(dataobj)) {
+            switch(typeof(dataobj) === 'object' && !Array.isArray(dataobj)) {
                 case true:
                     for (let key in dataobj) {
                         console.log(`${key} -\n`);
-                        return myParsing(dataobj[key]);
+                        myParsing(dataobj[key]);
                         }
-                    }
                 default:
                     for (item of dataobj) {
                         myParsing(item);
@@ -73,7 +72,7 @@ const myParsing = (dataobj) => {
                 }
             }
         }
-    }
+        
 
 console.log(myParsing(person3))
 
